@@ -41,7 +41,7 @@ func TestConstraints(t *testing.T) {
 	t.Run("given a puzzle, get second 'quadrant'", func(t *testing.T) {
 		solver := sudoku_solver.Solver{Puzzle: solvedPuzzle}
 
-		gotQuadrant := solver.Puzzle.QuadrantAt(2)
+		gotQuadrant := solver.Puzzle.QuadrantAt(0, 6)
 		expectedQuadrant := sudoku_solver.Line{6, 8, 1, 5, 7, 2, 3, 4, 9}
 
 		assertLine(t, gotQuadrant, expectedQuadrant)
@@ -50,7 +50,7 @@ func TestConstraints(t *testing.T) {
 	t.Run("given a puzzle, get middle 'quadrant'", func(t *testing.T) {
 		solver := sudoku_solver.Solver{Puzzle: solvedPuzzle}
 
-		gotQuadrant := solver.Puzzle.QuadrantAt(4)
+		gotQuadrant := solver.Puzzle.QuadrantAt(3, 3)
 		expectedQuadrant := sudoku_solver.Line{7, 3, 6, 5, 4, 2, 9, 1, 8}
 
 		assertLine(t, gotQuadrant, expectedQuadrant)
@@ -59,6 +59,6 @@ func TestConstraints(t *testing.T) {
 
 func assertLine(t *testing.T, gotLine sudoku_solver.Line, expectedLine sudoku_solver.Line) {
 	if !reflect.DeepEqual(gotLine, expectedLine) {
-		t.Errorf("want %v got %v", gotLine, expectedLine)
+		t.Errorf("want %v got %v", expectedLine, gotLine)
 	}
 }

@@ -17,16 +17,11 @@ func (p Puzzle) ColumnAt(at int) (column Line) {
 	}
 	return
 }
-func (p Puzzle) QuadrantAt(at int) (quadrant Line) {
-
-	quadrant[0] = p[0][6]
-	quadrant[1] = p[0][7]
-	quadrant[2] = p[0][8]
-	quadrant[3] = p[1][6]
-	quadrant[4] = p[1][7]
-	quadrant[5] = p[1][8]
-	quadrant[6] = p[2][6]
-	quadrant[7] = p[2][7]
-	quadrant[8] = p[2][8]
+func (p Puzzle) QuadrantAt(startX, startY int) (quadrant Line) {
+	for x := 0; x < 3; x++ {
+		for y := 0; y < 3; y++ {
+			quadrant[x*3+y] = p[x+startX][y+startY]
+		}
+	}
 	return
 }
